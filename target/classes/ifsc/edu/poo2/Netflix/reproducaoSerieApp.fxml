@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="1360.0" style="-fx-background-color: black;" styleClass="bodybg" stylesheets="@img/fundoReproducao.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.ReproducaoSerieController">
+   <children>
+      <AnchorPane layoutX="650.0" layoutY="194.0" prefHeight="103.0" prefWidth="75.0">
+         <children>
+            <ImageView fitHeight="79.0" fitWidth="75.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@img/spinner.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Label layoutX="274.0" layoutY="589.0" text="Usuario :" textFill="#fcf9f9" />
+      <Label layoutX="499.0" layoutY="589.0" text="Perfil:" textFill="#fcf9f9" />
+      <Label layoutX="747.0" layoutY="589.0" text="Serie:" textFill="#fcf9f9" />
+      <Label fx:id="lblPerfil" layoutX="543.0" layoutY="589.0" prefHeight="16.0" prefWidth="178.0" textFill="WHITE" />
+      <Label fx:id="lblUser" layoutX="338.0" layoutY="589.0" prefHeight="16.0" prefWidth="151.0" textFill="WHITE" />
+      <Label fx:id="lblSerie" layoutX="796.0" layoutY="589.0" prefHeight="16.0" prefWidth="151.0" textFill="WHITE" />
+      <JFXButton fx:id="btnVoltar" layoutX="15.0" layoutY="32.0" onAction="#retornar" prefHeight="32.0" prefWidth="75.0" text="." />
+      <JFXButton fx:id="btnPlay" layoutY="569.0" onAction="#getLabels" prefHeight="57.0" prefWidth="58.0" text="." />
+   </children>
+</AnchorPane>

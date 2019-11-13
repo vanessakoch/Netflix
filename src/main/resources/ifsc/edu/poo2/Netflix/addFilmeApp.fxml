@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="861.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.AddFilmController">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="861.0" style="-fx-background-color: #000000;" styleClass="bodybg" stylesheets="@img/fundoAjuda.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="137.0" layoutX="41.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="41.0" AnchorPane.topAnchor="-1.0">
+               <image>
+                  <Image url="@img/netflixSemFundo.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnHome" buttonType="RAISED" layoutX="846.0" layoutY="7.0" onAction="#retornar" prefHeight="32.0" prefWidth="78.0" ripplerFill="#f2ecec" style="-fx-background-color: #C62828;" text="HOME" textFill="WHITE" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="7.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="2.0" layoutY="54.0" prefHeight="507.0" prefWidth="836.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="54.0">
+         <children>
+            <AnchorPane prefHeight="468.0" prefWidth="822.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXListView fx:id="listFilme" editable="true" layoutX="24.0" layoutY="43.0" prefHeight="352.0" prefWidth="570.0" />
+                  <JFXButton fx:id="btnFilme" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="649.0" layoutY="317.0" onAction="#addFilmeLista" prefHeight="32.0" prefWidth="119.0" ripplerFill="#00bbff" style="-fx-background-color: white;" text="ADICIONAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXComboBox fx:id="comboGenero" focusColor="BLACK" labelFloat="true" layoutX="621.0" layoutY="218.0" prefHeight="32.0" prefWidth="172.0" promptText="GENERO" unFocusColor="#207bf5">
+                     <cursor>
+                        <Cursor fx:constant="NW_RESIZE" />
+                     </cursor></JFXComboBox>
+                  <TextField fx:id="txtFilme" alignment="CENTER" layoutX="622.0" layoutY="43.0" prefHeight="32.0" prefWidth="172.0" promptText="Título do Filme">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtDiretor" alignment="CENTER" layoutX="621.0" layoutY="98.0" prefHeight="32.0" prefWidth="172.0" promptText="Diretor">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtAno" alignment="CENTER" layoutX="621.0" layoutY="154.0" prefHeight="32.0" prefWidth="172.0" promptText="Ano">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <JFXButton fx:id="btnRemoveFilme" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="24.0" layoutY="422.0" onAction="#removeFilme" prefHeight="32.0" prefWidth="119.0" ripplerFill="#fa1c07" style="-fx-background-color: white;" text="REMOVER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEditaFilme" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="184.0" layoutY="422.0" onAction="#editaFilme" prefHeight="32.0" prefWidth="119.0" ripplerFill="#07fa30" style="-fx-background-color: white;" text="EDITAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Label contentDisplay="CENTER" layoutX="216.0" layoutY="6.0" prefHeight="28.0" prefWidth="405.0" text="Adicione aqui seus FILMES favoritos!" textAlignment="CENTER" textFill="#5e5e5e">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="433.0" layoutY="431.0" text="Para editar selecione um item, coloque o novo atributo e clique em EDITAR">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="395.0" layoutY="430.0" prefHeight="16.0" prefWidth="33.0" text="INFO" textFill="#ee0202" />
+                  <Label layoutX="433.0" layoutY="447.0" text="Para remover, selecione o item desejado e clique em REMOVER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

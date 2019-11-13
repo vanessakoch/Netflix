@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="547.0" prefWidth="741.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.SignatureController">
+   <children>
+      <Label fx:id="lblPlano" layoutX="84.0" layoutY="52.0" prefHeight="27.0" prefWidth="258.0" style="-fx-background-color: white;" text="Escolha o melhor plano para você" AnchorPane.topAnchor="52.0">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblTroca" layoutX="84.0" layoutY="79.0" prefHeight="27.0" prefWidth="215.0" text="Troque de plano quando quiser" AnchorPane.topAnchor="79.0" />
+      <HBox alignment="CENTER" layoutX="107.0" layoutY="200.0" prefHeight="257.0" prefWidth="561.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="107.0" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="215.0">
+         <children>
+            <AnchorPane prefHeight="257.0" prefWidth="565.0">
+               <children>
+                  <JFXListView fx:id="listBeneficios" fixedCellSize="20.0" prefHeight="256.0" prefWidth="182.0">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets right="2.0" />
+                     </opaqueInsets></JFXListView>
+                  <JFXListView fx:id="listBasico" layoutX="186.0" prefHeight="256.0" prefWidth="123.0">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></JFXListView>
+                  <JFXListView fx:id="listPadrao" layoutX="314.0" prefHeight="256.0" prefWidth="123.0">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></JFXListView>
+                  <JFXListView fx:id="listPremium" layoutX="442.0" prefHeight="256.0" prefWidth="123.0">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding></JFXListView>
+                  <Label contentDisplay="CENTER" layoutX="1.0" layoutY="3.0" prefHeight="33.0" prefWidth="182.0" text="Preço mensal após o mês gratuíto" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="3.0" layoutY="36.0" prefHeight="33.0" prefWidth="182.0" text="HD disponível" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="3.0" layoutY="69.0" prefHeight="33.0" prefWidth="182.0" text="Ultra HD disponível" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="3.0" layoutY="102.0" prefHeight="33.0" prefWidth="182.0" text="Telas simultâneas" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="3.0" layoutY="135.0" prefHeight="33.0" prefWidth="182.0" text="Filmes e séries limitados" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="1.0" layoutY="168.0" prefHeight="33.0" prefWidth="182.0" text="Cancele quando quiser" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="CENTER" layoutX="3.0" layoutY="202.0" prefHeight="33.0" prefWidth="182.0" text="Primeiro mês grátis" textAlignment="CENTER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="186.0" layoutY="1.0" prefHeight="33.0" prefWidth="123.0" text="R$21,90" />
+                  <Label alignment="CENTER" layoutX="314.0" layoutY="3.0" prefHeight="33.0" prefWidth="123.0" text="R$32,90" textFill="#0d0d0d" />
+                  <Label alignment="CENTER" layoutX="436.0" layoutY="3.0" prefHeight="33.0" prefWidth="123.0" text="R$45,90" textFill="#e10909">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font></Label>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="238.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="19.0" fitWidth="12.0" layoutX="238.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/cancel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="238.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="238.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="19.0" fitWidth="12.0" layoutX="238.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/cancel.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="367.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="367.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="367.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="367.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/check.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="491.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/checked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="492.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/checked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="491.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/checked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="491.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/checked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="12.0" fitWidth="12.0" layoutX="491.0" layoutY="212.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/checked.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="19.0" fitWidth="12.0" layoutX="367.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@img/cancel.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="240.0" layoutY="111.0" text="1" />
+                  <Label layoutX="368.0" layoutY="111.0" text="2" />
+                  <Label layoutX="492.0" layoutY="111.0" text="4" textFill="#f80f0f">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="105.0" layoutY="116.0" prefHeight="85.0" prefWidth="561.0" AnchorPane.leftAnchor="105.0" AnchorPane.rightAnchor="75.0">
+         <children>
+            <AnchorPane prefHeight="87.0" prefWidth="561.0" style="-fx-border-color: #BDBDBD;">
+               <children>
+                  <JFXButton fx:id="btnBasico" buttonType="RAISED" layoutX="195.0" layoutY="7.0" onAction="#assinaturaBasica" prefHeight="71.0" prefWidth="116.0" ripplerFill="WHITE" style="-fx-background-color: #EF9A9A;" text="Básico" textFill="#fcf7f7">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPadrao" buttonType="RAISED" layoutX="317.0" layoutY="7.0" onAction="#assinaturaPadrao" prefHeight="71.0" prefWidth="123.0" ripplerFill="WHITE" style="-fx-background-color: #EF9A9A;" text="Padrão" textFill="#fcf7f7">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnPremium" buttonType="RAISED" layoutX="447.0" layoutY="7.0" onAction="#assinaturaPremium" prefHeight="71.0" prefWidth="116.0" ripplerFill="WHITE" style="-fx-background-color: #EF5350;" text="Premium" textFill="#fcf7f7">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <VBox alignment="CENTER" layoutX="219.0" layoutY="487.0" prefHeight="33.0" prefWidth="333.0" AnchorPane.bottomAnchor="27.0" AnchorPane.leftAnchor="219.0" AnchorPane.rightAnchor="189.0" AnchorPane.topAnchor="487.0">
+         <children>
+            <Label prefHeight="40.0" prefWidth="565.0" text="A disponibilidade de alta definição (HD) e ultra alta definição (Ultra HD) está sujeita ao serviço de internet e funcionalidade do aparelho. Nem todo conteúdo está disponível em HD ou Ultra HD." textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+               <font>
+                  <Font size="9.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <JFXButton fx:id="btnInicio" buttonType="RAISED" layoutX="646.0" layoutY="23.0" onAction="#enterScreen" prefHeight="33.0" prefWidth="67.0" ripplerFill="WHITE" style="-fx-background-color: #C62828;" text="Início" textFill="WHITE" AnchorPane.leftAnchor="646.0" AnchorPane.topAnchor="23.0">
+         <font>
+            <Font size="14.0" />
+         </font></JFXButton>
+      <JFXButton fx:id="btnSair" buttonType="RAISED" layoutX="586.0" layoutY="27.0" onAction="#sair" prefHeight="26.0" prefWidth="53.0" ripplerFill="BLACK" style="-fx-background-color: white;" text="Sair" AnchorPane.leftAnchor="586.0" AnchorPane.topAnchor="27.0" />
+   </children>
+</AnchorPane>

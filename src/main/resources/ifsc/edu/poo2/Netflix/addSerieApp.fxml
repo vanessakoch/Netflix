@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="859.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.AddSerieController">
+   <children>
+      <AnchorPane prefHeight="58.0" prefWidth="900.0" style="-fx-background-color: #000000;" styleClass="bodybg" stylesheets="@img/fundoAjuda.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="137.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="7.0">
+               <image>
+                  <Image url="@img/netflixSemFundo.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnHome" buttonType="RAISED" layoutX="844.0" layoutY="15.0" onAction="#retornar" prefHeight="32.0" prefWidth="78.0" ripplerFill="#f2ecec" style="-fx-background-color: #C62828;" text="HOME" textFill="WHITE" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="15.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="-4.0" layoutY="64.0" prefHeight="490.0" prefWidth="860.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="64.0">
+         <children>
+            <AnchorPane prefHeight="481.0" prefWidth="849.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXListView fx:id="listSerie" editable="true" layoutX="28.0" layoutY="51.0" prefHeight="353.0" prefWidth="608.0" />
+                  <JFXButton fx:id="btnSerie" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="682.0" layoutY="283.0" onAction="#adicionaSerie" prefHeight="32.0" prefWidth="119.0" ripplerFill="#0606fc" style="-fx-background-color: white;" text="ADICIONAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRemoveSerie" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="28.0" layoutY="429.0" onAction="#removeSerie" prefHeight="32.0" prefWidth="119.0" ripplerFill="#fa1c07" style="-fx-background-color: white;" text="REMOVER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEditaSerie" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="171.0" layoutY="429.0" onAction="#editaSerie" prefHeight="32.0" prefWidth="119.0" ripplerFill="#07fa30" style="-fx-background-color: white;" text="EDITAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <TextField fx:id="txtSerie" alignment="CENTER" layoutX="658.0" layoutY="51.0" prefHeight="32.0" prefWidth="166.0" promptText="Título da Série">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtTemporadas" alignment="CENTER" layoutX="658.0" layoutY="131.0" prefHeight="32.0" prefWidth="166.0" promptText="Temporadas">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="txtAno" alignment="CENTER" layoutX="658.0" layoutY="209.0" prefHeight="32.0" prefWidth="166.0" promptText="Ano">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </TextField>
+                  <Label alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="204.0" layoutY="14.0" prefHeight="32.0" prefWidth="429.0" text="Adicione aqui suas SÉRIES favoritas!" textFill="#656565">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="447.0" layoutY="438.0" text="Para editar selecione um item, coloque o novo atributo e clique em EDITAR">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="402.0" layoutY="437.0" prefHeight="16.0" prefWidth="33.0" text="INFO" textFill="#ee0202" />
+                  <Label layoutX="447.0" layoutY="454.0" text="Para remover, selecione o item desejado e clique em REMOVER">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

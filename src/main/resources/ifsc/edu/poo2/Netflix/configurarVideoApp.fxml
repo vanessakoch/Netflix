@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="705.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.ConfigurarVideoController">
+   <children>
+      <AnchorPane prefHeight="57.0" prefWidth="705.0" style="-fx-background-color: #000000;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView fitHeight="45.0" fitWidth="115.0" layoutX="14.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="12.0">
+               <image>
+                  <Image url="@img/iconeNetflix.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnInicio" layoutX="137.0" layoutY="20.0" onAction="#voltarInicio" ripplerFill="WHITE" text="Início" textFill="#a19999" AnchorPane.leftAnchor="137.0" AnchorPane.topAnchor="20.0" />
+            <JFXButton fx:id="btnLista" layoutX="208.0" layoutY="20.0" onAction="#lista" text="Minha lista" textFill="#948e8e" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="20.0" />
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="89.0" layoutY="59.0" prefHeight="444.0" prefWidth="548.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="68.0" AnchorPane.topAnchor="59.0">
+         <children>
+            <AnchorPane prefHeight="421.0" prefWidth="548.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="-1.0" text="Configurações de Reprodução">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="36.0" text="Uso de dados por tela">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXRadioButton fx:id="radioAutomatico" layoutX="23.0" layoutY="72.0" onAction="#addRadio" selected="true" text="Automático" />
+                  <JFXRadioButton fx:id="radioBaixo" layoutX="21.0" layoutY="113.0" onAction="#addRadio" text="Baixo" />
+                  <JFXRadioButton fx:id="radioMedio" layoutX="20.0" layoutY="158.0" onAction="#addRadio" text="Médio" />
+                  <JFXRadioButton fx:id="radioAlto" layoutX="20.0" layoutY="202.0" onAction="#addRadio" text="Alto" />
+                  <Label layoutX="56.0" layoutY="97.0" text="Qualidade de vídeo e uso de dados pré-definidos">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="56.0" layoutY="137.0" text="Qualidade de vídeo básica, até 0,3 GB por hora">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="55.0" layoutY="180.0" text="Qualidade de vídeo padrão, ate 0,7 GB por hora">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="54.0" layoutY="228.0" text="Melhor qualidade de vídeo: até 3 GB por hora para HD e 7 GB por hora para Ultra HD">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="19.0" layoutY="272.0" text="Início automático">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+                  <JFXCheckBox fx:id="checkAutomatico" checkedColor="#0227f5" layoutX="19.0" layoutY="310.0" selected="true" text="Reproduzir o próximo episódio automaticamente" textFill="#3d3d40" unCheckedColor="#612525" />
+                  <JFXButton fx:id="btnSalvar" buttonType="RAISED" layoutX="16.0" layoutY="365.0" onAction="#voltarInicio" prefHeight="30.0" prefWidth="78.0" ripplerFill="WHITE" style="-fx-background-color: #039BE5;" text="Salvar" textFill="WHITE" />
+                  <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="103.0" layoutY="365.0" onAction="#voltarInicio" prefHeight="30.0" prefWidth="78.0" ripplerFill="#868383" style="-fx-background-color: white;" text="Cancelar" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

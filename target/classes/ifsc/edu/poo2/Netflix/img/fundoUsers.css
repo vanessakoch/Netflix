@@ -1,0 +1,12 @@
+.body1{
+	-fx-graphic: url('user1.png');
+}
+.body2 {
+	-fx-graphic: url('user2.png');
+}
+.body3 {
+	-fx-graphic: url('user3.png');
+}
+.body4 {
+	-fx-graphic: url('user4.png');
+}
