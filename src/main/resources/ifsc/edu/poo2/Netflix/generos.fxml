@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="554.0" prefWidth="686.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.GeneroController">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="861.0" style="-fx-background-color: #000000;" styleClass="bodybg" stylesheets="@img/fundoAjuda.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="49.0" fitWidth="137.0" layoutX="23.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="-1.0">
+               <image>
+                  <Image url="@img/netflixSemFundo.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="btnHome" buttonType="RAISED" layoutX="846.0" layoutY="7.0" onAction="#retornar" prefHeight="32.0" prefWidth="78.0" ripplerFill="#f2ecec" style="-fx-background-color: #C62828;" text="HOME" textFill="WHITE" AnchorPane.rightAnchor="29.0" AnchorPane.topAnchor="7.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="2.0" layoutY="54.0" prefHeight="507.0" prefWidth="861.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="54.0">
+         <children>
+            <AnchorPane prefHeight="494.0" prefWidth="690.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXListView fx:id="generoLista" editable="true" layoutX="161.0" layoutY="71.0" prefHeight="246.0" prefWidth="366.0" />
+                  <JFXButton fx:id="btnAdd" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="161.0" layoutY="448.0" onAction="#addGenero" prefHeight="32.0" prefWidth="119.0" ripplerFill="#00bbff" style="-fx-background-color: white;" text="ADICIONAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="btnRemove" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="414.0" layoutY="448.0" onAction="#removeGenero" prefHeight="32.0" prefWidth="119.0" ripplerFill="#fa1c07" style="-fx-background-color: white;" text="REMOVER" textFill="RED">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+                  <Label contentDisplay="CENTER" layoutX="300.0" layoutY="26.0" prefHeight="28.0" prefWidth="89.0" text="GENERO" textAlignment="CENTER" textFill="#5e5e5e">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="txtEditar" layoutX="214.0" layoutY="347.0" />
+                  <JFXButton fx:id="btnEdita" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="389.0" layoutY="344.0" onAction="#editaGenero" prefHeight="32.0" prefWidth="89.0" ripplerFill="#c93aa3" style="-fx-background-color: white;" text="EDITAR">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -2,11 +2,15 @@ package ifsc.edu.poo2.Netflix.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Genero {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Long id;
 	@Column( name = "Genero" )
 	private String nome;
 
@@ -20,6 +24,18 @@ public class Genero {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	@Override

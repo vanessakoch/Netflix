@@ -104,6 +104,11 @@ public class HomeSerieController {
 	}
 
 	@FXML
+	public void irGenero() {
+		App.changeScreen("generos");
+	}
+	
+	@FXML
 	public void irFilme() {
 		App.changeScreen("filmHome");
 	}

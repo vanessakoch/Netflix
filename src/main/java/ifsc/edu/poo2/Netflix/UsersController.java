@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 
-import ifsc.edu.poo2.Netflix.entities.FilmeDAO;
 import ifsc.edu.poo2.Netflix.entities.Perfil;
 import ifsc.edu.poo2.Netflix.entities.PerfilDAO;
 import javafx.event.ActionEvent;
@@ -96,7 +95,6 @@ public class UsersController implements Initializable {
 	@FXML
 	void userChoice(ActionEvent event) {
 		verSelecionado();
-		System.out.println(PerfilDAO.getPerfis().size());
 		if (radioGroup.getSelectedToggle() != null && selecionado != null) {
 			App.changeScreen("home");
 		} else {

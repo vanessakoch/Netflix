@@ -2,12 +2,16 @@ package ifsc.edu.poo2.Netflix.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Pergunta {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Long id;
 	@Column( name = "Pergunta" )
 	private String titulo;
 	@Column( name = "Resposta" )
@@ -23,13 +27,13 @@ public class Pergunta {
 		this.descricao = descricao;
 	}
 
-//	public int getId() {
-//		return id;
-//	}
-//
-//	public void setId(int id) {
-//		this.id = id;
-//	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -61,7 +65,6 @@ public class Pergunta {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		// result = prime * result + id;
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
@@ -80,8 +83,6 @@ public class Pergunta {
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
-//		if (id != other.id)
-//			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
 				return false;

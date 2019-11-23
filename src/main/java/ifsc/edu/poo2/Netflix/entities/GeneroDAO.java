@@ -38,4 +38,14 @@ public class GeneroDAO {
 		em.close();
 		getGenero().remove(genero);
 	}
+	
+	public static void update(Genero genero) {
+		EntityManager em = Conn.getEntityManager();
+		em.getTransaction().begin();
+		Genero generoDB = em.find(Genero.class, genero.getId());
+		generoDB.setNome(genero.getNome());
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 }

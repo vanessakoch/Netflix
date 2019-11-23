@@ -97,6 +97,11 @@ public class HomeFilmController {
 	public void menuAjuda() {
 		App.changeScreen("help");
 	}
+	
+	@FXML
+	public void irGenero() {
+		App.changeScreen("generos");
+	}
 
 	@FXML
 	public void menuUsers() {
