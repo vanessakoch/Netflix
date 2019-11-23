@@ -2,6 +2,7 @@ package ifsc.edu.poo2.Netflix.entities;
 
 import javax.persistence.EntityManager;
 
+import ifsc.edu.poo2.Netflix.EnterController;
 import ifsc.edu.poo2.Netflix.database.Conn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,5 +44,18 @@ public class PerfilDAO {
 		em.close();
 	}
 
-
+	public static void delete(Perfil perfil) {		
+		EntityManager em = Conn.getEntityManager();
+		User logado = em.find(User.class, EnterController.loginName);
+		em.getTransaction().begin();
+		logado.removeSharePerfil(perfil);
+		Perfil perfilDB = em.find(Perfil.class, perfil.getId());
+		em.remove(perfilDB);
+		em.getTransaction().commit();
+		em.close();
+		getPerfis().remove(perfil);
+		logado.getListaPerfis().remove(perfil);
+		
+	}
+	
 }

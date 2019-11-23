@@ -46,18 +46,6 @@
             </AnchorPane>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="482.0" layoutY="437.0" prefHeight="48.0" prefWidth="195.0" AnchorPane.leftAnchor="482.0" AnchorPane.rightAnchor="167.0">
-         <children>
-            <JFXButton fx:id="btnEntrar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#userChoice" prefHeight="34.0" prefWidth="182.0" ripplerFill="BLACK" style="-fx-border-style: solid; -fx-border-color: #424242;" text="ENTRAR">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </JFXButton>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" layoutX="291.0" layoutY="62.0" prefHeight="43.0" prefWidth="326.0" AnchorPane.leftAnchor="291.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="62.0">
          <children>
             <Label fx:id="lblQuemAssiste" prefHeight="34.0" prefWidth="324.0" text="Quem está assistindo ?" textFill="#fcf5f5">
@@ -67,16 +55,36 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="173.0" layoutY="440.0" prefHeight="43.0" prefWidth="186.0" AnchorPane.leftAnchor="173.0" AnchorPane.rightAnchor="485.0">
+      <HBox alignment="CENTER" layoutX="153.0" layoutY="457.0" prefHeight="43.0" prefWidth="594.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="97.0">
          <children>
-            <JFXButton fx:id="btnGerenciaPerfis" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#gerenciaConta" prefHeight="34.0" prefWidth="182.0" ripplerFill="BLACK" style="-fx-border-style: solid; -fx-border-color: #424242;" text="GERENCIAR PERFIS">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </JFXButton>
+            <AnchorPane prefHeight="43.0" prefWidth="595.0">
+               <children>
+                  <JFXButton fx:id="btnGerenciaPerfis" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="207.0" layoutY="5.0" onAction="#gerenciaConta" prefHeight="34.0" prefWidth="182.0" ripplerFill="BLACK" style="-fx-border-style: solid; -fx-border-color: #424242;" text="GERENCIAR PERFIS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+                  <JFXButton fx:id="btnNovoPerfil" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutY="5.0" onAction="#adicionarPerfil" prefHeight="34.0" prefWidth="182.0" ripplerFill="BLACK" style="-fx-border-style: solid; -fx-border-color: #424242;" text="NOVO PERFIL">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+                  <JFXButton fx:id="btnEntrar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="413.0" layoutY="5.0" onAction="#userChoice" prefHeight="34.0" prefWidth="182.0" ripplerFill="BLACK" style="-fx-border-style: solid; -fx-border-color: #424242;" text="ENTRAR">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
          </children>
       </HBox>
    </children>

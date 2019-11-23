@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="1360.0" style="-fx-background-color: black;" styleClass="bodybg" stylesheets="@img/fundoReproducao.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.ReproducaoSerieController">
    <children>
@@ -17,11 +18,14 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Label layoutX="274.0" layoutY="589.0" text="Usuario :" textFill="#fcf9f9" />
+      <Label layoutX="274.0" layoutY="589.0" text="Usuario :" textFill="#fcf9f9">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></Label>
       <Label layoutX="499.0" layoutY="589.0" text="Perfil:" textFill="#fcf9f9" />
       <Label layoutX="747.0" layoutY="589.0" text="Serie:" textFill="#fcf9f9" />
       <Label fx:id="lblPerfil" layoutX="543.0" layoutY="589.0" prefHeight="16.0" prefWidth="178.0" textFill="WHITE" />
-      <Label fx:id="lblUser" layoutX="338.0" layoutY="589.0" prefHeight="16.0" prefWidth="151.0" textFill="WHITE" />
+      <Label fx:id="lblUser" layoutX="348.0" layoutY="589.0" prefHeight="16.0" prefWidth="141.0" textFill="WHITE" />
       <Label fx:id="lblSerie" layoutX="796.0" layoutY="589.0" prefHeight="16.0" prefWidth="151.0" textFill="WHITE" />
       <JFXButton fx:id="btnVoltar" layoutX="15.0" layoutY="32.0" onAction="#retornar" prefHeight="32.0" prefWidth="75.0" text="." />
       <JFXButton fx:id="btnPlay" layoutY="569.0" onAction="#getLabels" prefHeight="57.0" prefWidth="58.0" text="." />

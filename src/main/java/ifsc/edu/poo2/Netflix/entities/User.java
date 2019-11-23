@@ -163,6 +163,14 @@ public class User {
 	public void setRegisterDate(String registerDate) {
 		this.registerDate = registerDate;
 	}
+	
+	public List<Perfil> getListaPerfis() {
+		return listaPerfis;
+	}
+
+	public void setListaPerfis(List<Perfil> listaPerfis) {
+		this.listaPerfis = listaPerfis;
+	}
 
 	@Override
 	public String toString() {

@@ -1,37 +1,39 @@
 package ifsc.edu.poo2.Netflix.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Perfil {
 
 	@Id
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	
+	private Long id;
 	private String nome;
 	private String idioma;
 	private String permissao;
 	private boolean menorIdade;
-
-	public Perfil(int id, String nome, String idioma, String permissao, boolean menorIdade) {
+	
+	@ManyToOne
+	private User users;
+	
+	public Perfil() {
 		super();
-		this.id = id;
+	}
+
+	public Perfil(String nome, String idioma, String permissao, boolean menorIdade) {
+		super();
 		this.nome = nome;
 		this.idioma = idioma;
 		this.permissao = permissao;
 		this.menorIdade = menorIdade;
 	}
 
-	public Perfil() {
-		super();
-	}
-
-	public int getId() {
+	public Long getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -68,14 +70,13 @@ public class Perfil {
 
 	@Override
 	public String toString() {
-		return "Nome: " + nome + ", Idioma: " + idioma + ", Permissao: " + permissao + ", Crianca: " + menorIdade;
+		return id + " - Nome: " + nome + ", Idioma: " + idioma + ", Permissao: " + permissao + ", Crianca: " + menorIdade;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + id;
 		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		result = prime * result + (menorIdade ? 1231 : 1237);
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -92,8 +93,6 @@ public class Perfil {
 		if (getClass() != obj.getClass())
 			return false;
 		Perfil other = (Perfil) obj;
-		if (id != other.id)
-			return false;
 		if (idioma == null) {
 			if (other.idioma != null)
 				return false;
@@ -113,5 +112,8 @@ public class Perfil {
 			return false;
 		return true;
 	}
+
+	
+
 
 }

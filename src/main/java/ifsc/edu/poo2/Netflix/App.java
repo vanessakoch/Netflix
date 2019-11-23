@@ -37,6 +37,7 @@ public class App extends Application {
 	private static Scene selecionaSerieScreen;
 	private static Scene reproducaoFilmeScreen;
 	private static Scene reproducaoSerieScreen;
+	private static Scene addPerfilScreen;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -45,12 +46,12 @@ public class App extends Application {
 			UserDAO.addUser(new User("Admin", "netflix@netflix.com", "admin", "Premium", 0));
 		}
 
-		if (PerfilDAO.getPerfis().isEmpty()) {
-			PerfilDAO.addPerfil(new Perfil(1, "Pagador", "Português", "Todos os níveis de maturidade", false));
-			PerfilDAO.addPerfil(new Perfil(2, "Parasita 1", "Português", "Todos os níveis de maturidade", false));
-			PerfilDAO.addPerfil(new Perfil(3, "Parasita 2", "Português", "Todos os níveis de maturidade", false));
-			PerfilDAO.addPerfil(new Perfil(4, "Parasita 3", "Português", "Baixos níveis de maturidade", true));
-		}
+//		if (PerfilDAO.getPerfis().isEmpty()) {
+//			PerfilDAO.addPerfil(new Perfil("Pagador", "Português", "Todos os níveis de maturidade", false));
+//			PerfilDAO.addPerfil(new Perfil("Parasita 1", "Português", "Todos os níveis de maturidade", false));
+//			PerfilDAO.addPerfil(new Perfil("Parasita 2", "Português", "Todos os níveis de maturidade", false));
+//			PerfilDAO.addPerfil(new Perfil("Parasita 3", "Português", "Baixos níveis de maturidade", true));
+//		}
 		if (GeneroDAO.getGenero().isEmpty()) {
 			GeneroDAO.addGenero(new Genero("Terror"));
 			GeneroDAO.addGenero(new Genero("Ação"));
@@ -127,6 +128,9 @@ public class App extends Application {
 		Parent fxmlReproduzSerie = FXMLLoader.load(getClass().getResource("reproducaoSerieApp.fxml"));
 		reproducaoSerieScreen = new Scene(fxmlReproduzSerie);
 
+		Parent fxmlAddPerfil = FXMLLoader.load(getClass().getResource("addPerfil.fxml"));
+		addPerfilScreen = new Scene(fxmlAddPerfil, 1360, 700);
+				
 		primaryStage.setScene(enterScreen);
 		primaryStage.show();
 
@@ -187,6 +191,9 @@ public class App extends Application {
 			break;
 		case "reproduzSerie":
 			stage.setScene(reproducaoSerieScreen);
+			break;
+		case "addPerfil":
+			stage.setScene(addPerfilScreen);
 			break;
 		case "exit":
 			stage.close();
