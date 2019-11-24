@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="1360.0" style="-fx-background-color: black;" styleClass="bodybg" stylesheets="@img/fundoReproducao.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.ReproducaoFilmeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="1360.0" style="-fx-background-color: black;" styleClass="bodybg" stylesheets="@img/fundoReproducao.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.controllers.ReproducaoFilmeController">
    <children>
       <AnchorPane layoutX="650.0" layoutY="194.0" prefHeight="103.0" prefWidth="75.0">
          <children>

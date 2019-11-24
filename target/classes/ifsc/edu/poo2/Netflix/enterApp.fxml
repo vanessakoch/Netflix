@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="543.0" prefWidth="845.0" styleClass="bodybg" stylesheets="@img/fundoEnter.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.EnterController">
+<AnchorPane prefHeight="543.0" prefWidth="845.0" styleClass="bodybg" stylesheets="@img/fundoEnter.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.controllers.EnterController">
    <children>
       <VBox alignment="BOTTOM_CENTER" fillWidth="false" layoutX="265.0" layoutY="49.0" prefHeight="494.0" prefWidth="367.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="265.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="49.0">
          <children>

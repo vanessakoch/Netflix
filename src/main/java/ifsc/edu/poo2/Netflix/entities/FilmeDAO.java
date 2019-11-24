@@ -2,7 +2,7 @@ package ifsc.edu.poo2.Netflix.entities;
 
 import javax.persistence.EntityManager;
 
-import ifsc.edu.poo2.Netflix.EnterController;
+import ifsc.edu.poo2.Netflix.controllers.EnterController;
 import ifsc.edu.poo2.Netflix.database.Conn;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
