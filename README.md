@@ -6,8 +6,8 @@ Interface Gráfica - Ok
 
 Hibernate - Ok (CRUDs funcionando)
 
-Servidor - Loading ...
+Servidor - Ok
 
-Sockets - Loading ...
+Sockets - Ok
 
-Mais Threads - Loading ...
+Mais Threads - Ok
