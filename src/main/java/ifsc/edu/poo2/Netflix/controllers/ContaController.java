@@ -1,5 +1,6 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,8 +9,8 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 
 import ifsc.edu.poo2.Netflix.App;
+import ifsc.edu.poo2.Netflix.database.PerfilDAO;
 import ifsc.edu.poo2.Netflix.entities.Perfil;
-import ifsc.edu.poo2.Netflix.entities.PerfilDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -45,7 +46,7 @@ public class ContaController implements Initializable {
 	private Label lblPerfilSelecionado;
 
 	UsersController uc = new UsersController();
-	
+
 	public void initialize(URL location, ResourceBundle resources) {
 		comboIdioma.setItems(listaIdioma);
 		comboPermissao.setItems(listaPermissao);
@@ -58,7 +59,7 @@ public class ContaController implements Initializable {
 			"Médios níveis de maturidade", "Baixos níveis de maturidade");
 
 	@FXML
-	public void retornar() {
+	public void retornar() throws IOException {
 		lblPerfilSelecionado.setText("");
 		App.changeScreen("users");
 	}
@@ -67,8 +68,8 @@ public class ContaController implements Initializable {
 		lblPerfilSelecionado.setText(UsersController.selecionado.toString());
 	}
 
-	public void atualizar() {
-		
+	public void atualizar() throws IOException {
+
 		if (!txtNome.getText().isEmpty()) {
 			UsersController.selecionado.setNome(txtNome.getText());
 		}
@@ -83,14 +84,14 @@ public class ContaController implements Initializable {
 		if (!comboPermissao.getSelectionModel().isEmpty()) {
 			UsersController.selecionado.setPermissao(comboPermissao.getSelectionModel().getSelectedItem());
 		}
-		PerfilDAO.update(UsersController.selecionado);
+		new PerfilDAO().update(UsersController.selecionado);
 		txtNome.clear();
 		checkCrianca.setSelected(false);
 		lblPerfilSelecionado.setText("");
 		App.changeScreen("users");
 	}
 
-	public void addPerfil() {
+	public void addPerfil() throws IOException {
 		Perfil novo = new Perfil();
 		if (!txtNome.getText().isEmpty() && !comboIdioma.getSelectionModel().isEmpty()
 				&& !comboPermissao.getSelectionModel().isEmpty()) {
@@ -102,7 +103,7 @@ public class ContaController implements Initializable {
 						comboPermissao.getSelectionModel().getSelectedItem(), false);
 			}
 
-			PerfilDAO.addPerfil(novo);
+			new PerfilDAO().add(novo);
 			txtNome.clear();
 			checkCrianca.setSelected(false);
 			App.changeScreen("users");
@@ -116,11 +117,11 @@ public class ContaController implements Initializable {
 	}
 
 	public void deletePerfil() {
+		PerfilDAO dao = new PerfilDAO();
 		try {
-			if (!PerfilDAO.getPerfis().isEmpty()) {
-				PerfilDAO.delete(UsersController.selecionado);
+			if (!dao.getAll().isEmpty()) {
+				dao.delete(UsersController.selecionado);
 				App.changeScreen("users");
-
 			}
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
@@ -129,9 +130,9 @@ public class ContaController implements Initializable {
 			dialogoErro.showAndWait();
 		}
 	}
-	
+
 	@FXML
-	public void home() {
+	public void home() throws IOException {
 		lblPerfilSelecionado.setText("");
 		App.changeScreen("home");
 	}

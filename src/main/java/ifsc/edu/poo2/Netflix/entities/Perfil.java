@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class Perfil {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String nome;
 	private String idioma;
 	private String permissao;
 	private boolean menorIdade;
-	
+
 	public Perfil() {
 		super();
 	}
@@ -28,7 +28,16 @@ public class Perfil {
 		this.menorIdade = menorIdade;
 	}
 
-	public Long getId() {
+	public Perfil(int id, String nome, String idioma, String permissao, boolean menorIdade) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.idioma = idioma;
+		this.permissao = permissao;
+		this.menorIdade = menorIdade;
+	}
+
+	public int getId() {
 		return id;
 	}
 
@@ -66,13 +75,14 @@ public class Perfil {
 
 	@Override
 	public String toString() {
-		return id + " - Nome: " + nome + ", Idioma: " + idioma + ", Permissao: " + permissao + ", Crianca: " + menorIdade;
+		return "Nome: " + nome + ", Idioma: " + idioma + ", Permissao: " + permissao + ", Crianca: " + menorIdade;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + id;
 		result = prime * result + ((idioma == null) ? 0 : idioma.hashCode());
 		result = prime * result + (menorIdade ? 1231 : 1237);
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
@@ -89,6 +99,8 @@ public class Perfil {
 		if (getClass() != obj.getClass())
 			return false;
 		Perfil other = (Perfil) obj;
+		if (id != other.id)
+			return false;
 		if (idioma == null) {
 			if (other.idioma != null)
 				return false;
@@ -108,8 +120,5 @@ public class Perfil {
 			return false;
 		return true;
 	}
-
-	
-
 
 }

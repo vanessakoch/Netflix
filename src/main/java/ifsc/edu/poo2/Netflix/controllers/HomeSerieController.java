@@ -1,9 +1,10 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 
 import ifsc.edu.poo2.Netflix.App;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
@@ -84,57 +85,56 @@ public class HomeSerieController {
 	private MenuItem opçUsers;
 
 	@FXML
-	public void menuFechar() {
-		Platform.exit();
-		App.changeScreen("exit");
+	public void menuFechar() throws IOException {
+		App.changeScreen("loadFinal");
 	}
 
 	@FXML
-	public void menuSair() {
-		App.changeScreen("enter");
+	public void menuSair() throws IOException {
+		App.changeScreen("loadSair");
 	}
 
 	@FXML
-	public void menuAjuda() {
+	public void menuAjuda() throws IOException {
 		App.changeScreen("help");
 	}
 
 	@FXML
-	public void menuUsers() {
+	public void menuUsers() throws IOException {
 		App.changeScreen("userList");
 	}
 
 	@FXML
-	public void irGenero() {
+	public void irGenero() throws IOException {
 		App.changeScreen("generos");
 	}
-	
+
 	@FXML
-	public void irFilme() {
+	public void irFilme() throws IOException {
 		App.changeScreen("filmHome");
 	}
 
 	@FXML
-	public void minhaLista() {
+	public void minhaLista() throws IOException {
 		App.changeScreen("addSerie");
 	}
 
 	@FXML
-	public void gerenciaConta() {
+	public void gerenciaConta() throws IOException {
 		App.changeScreen("conta");
 	}
 
 	@FXML
-	public void gerenciaPerfis() {
+	public void gerenciaPerfis() throws IOException {
 		App.changeScreen("users");
 	}
 
 	@FXML
-	public void configuraVideo() {
+	public void configuraVideo() throws IOException {
 		App.changeScreen("video");
 	}
-	
-	public void selecionaSerie() {
+
+	public void selecionaSerie() throws IOException {
 		App.changeScreen("selecionaSerie");
 	}
 }

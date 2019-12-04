@@ -29,7 +29,7 @@
          <children>
             <AnchorPane prefHeight="494.0" prefWidth="690.0" style="-fx-background-color: white;">
                <children>
-                  <JFXListView fx:id="filmeLista" editable="true" layoutX="161.0" layoutY="71.0" prefHeight="352.0" prefWidth="366.0" />
+                  <JFXListView fx:id="filmeLista" editable="true" layoutX="101.0" layoutY="71.0" prefHeight="352.0" prefWidth="484.0" />
                   <JFXButton fx:id="btnAssiste" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="407.0" layoutY="448.0" onAction="#assistir" prefHeight="32.0" prefWidth="119.0" ripplerFill="#00bbff" style="-fx-background-color: white;" text="ASSISTIR">
                      <font>
                         <Font name="System Bold" size="13.0" />

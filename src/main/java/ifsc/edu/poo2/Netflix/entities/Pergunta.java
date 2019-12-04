@@ -10,11 +10,11 @@ import javax.persistence.Id;
 public class Pergunta {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long id;
-	@Column( name = "Pergunta" )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "Pergunta")
 	private String titulo;
-	@Column( name = "Resposta" )
+	@Column(name = "Resposta")
 	private String descricao;
 
 	public Pergunta() {
@@ -27,12 +27,15 @@ public class Pergunta {
 		this.descricao = descricao;
 	}
 
-	public Long getId() {
-		return id;
+	public Pergunta(int id, String titulo, String descricao) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.descricao = descricao;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public int getId() {
+		return id;
 	}
 
 	public String getTitulo() {
@@ -65,6 +68,7 @@ public class Pergunta {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + id;
 		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
 		return result;
 	}
@@ -83,12 +87,13 @@ public class Pergunta {
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
+		if (id != other.id)
+			return false;
 		if (titulo == null) {
 			if (other.titulo != null)
 				return false;
 		} else if (!titulo.equals(other.titulo))
 			return false;
-
 		return true;
 	}
 

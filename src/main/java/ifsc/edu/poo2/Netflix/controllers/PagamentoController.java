@@ -1,5 +1,7 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 
 import ifsc.edu.poo2.Netflix.App;
@@ -14,12 +16,12 @@ public class PagamentoController {
 	private JFXButton btnContinuar;
 
 	@FXML
-	public void btnEntrarAction() {
+	public void btnEntrarAction() throws IOException {
 		App.changeScreen("enter");
 	}
 
 	@FXML
-	public void btnContinuarAction() {
+	public void btnContinuarAction() throws IOException {
 		App.changeScreen("video");
 	}
 

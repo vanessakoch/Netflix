@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="138.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.controllers.LoadingController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="84.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="141.0" prefWidth="600.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXProgressBar fx:id="progressBar" layoutX="43.0" layoutY="50.0" prefHeight="19.0" prefWidth="512.0" style="-fx-background-color: red;" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="45.0" />
+                  <Label layoutX="208.0" layoutY="14.0" prefHeight="19.0" prefWidth="185.0" text="Iniciando o programa ... " textAlignment="CENTER" textFill="#20430f" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="207.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="254.0" layoutY="90.0" onAction="#cancelar" prefHeight="34.0" prefWidth="90.0" ripplerFill="#f5969645" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

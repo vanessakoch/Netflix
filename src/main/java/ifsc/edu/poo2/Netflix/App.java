@@ -1,14 +1,9 @@
 package ifsc.edu.poo2.Netflix;
 
-import ifsc.edu.poo2.Netflix.database.Conn;
-import ifsc.edu.poo2.Netflix.database.Strings;
-import ifsc.edu.poo2.Netflix.entities.Genero;
-import ifsc.edu.poo2.Netflix.entities.GeneroDAO;
-import ifsc.edu.poo2.Netflix.entities.Pergunta;
-import ifsc.edu.poo2.Netflix.entities.PerguntaDAO;
-import ifsc.edu.poo2.Netflix.entities.User;
-import ifsc.edu.poo2.Netflix.entities.UserDAO;
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -37,177 +32,150 @@ public class App extends Application {
 	private static Scene reproducaoSerieScreen;
 	private static Scene addPerfilScreen;
 	private static Scene generoScreen;
+	private static Scene loadScreen;
+	private static Scene loadLoginScreen;
+	private static Scene loadFinalScreen;
+	private static Scene loadSairScreen;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 
-		if (UserDAO.getUsers().isEmpty()) {
-			UserDAO.addUser(new User("Admin", "netflix@netflix.com", "admin", "Premium", 0));
-		}
-
-		if (GeneroDAO.getGenero().isEmpty() || GeneroDAO.getGenero().size() < 5) {
-			GeneroDAO.addGenero(new Genero("Terror"));
-			GeneroDAO.addGenero(new Genero("Ação"));
-			GeneroDAO.addGenero(new Genero("Comédia"));
-			GeneroDAO.addGenero(new Genero("Comédia Romântica"));
-			GeneroDAO.addGenero(new Genero("Suspense"));
-		}
-
-		if (PerguntaDAO.getPergunta().isEmpty()) {
-			PerguntaDAO.addPergunta(new Pergunta("O quê é a Netflix?", Strings.oqueNetflix));
-			PerguntaDAO.addPergunta(new Pergunta("Quanto custa a Netflix?", Strings.custoNetflix));
-			PerguntaDAO.addPergunta(new Pergunta("Onde posso assistir?", Strings.ondeNetflix));
-			PerguntaDAO.addPergunta(new Pergunta("Como faço para cancelar?", Strings.cancelarNetflix));
-			PerguntaDAO.addPergunta(new Pergunta("Onde eu posso assistir a Netflix?", Strings.assistirNetflix));
-			PerguntaDAO.addPergunta(
-					new Pergunta("Como funciona o período de utilização gratuíta?", Strings.utilizarNetflix));
-		}
-
-		Conn.getEntityManager().close();
 		stage = primaryStage;
 
-		Parent fxmlEnter = FXMLLoader.load(getClass().getResource("enterApp.fxml"));
-		enterScreen = new Scene(fxmlEnter, 1360, 700);
+		Parent fxmlLoad = FXMLLoader.load(getClass().getResource("loading.fxml"));
+		loadScreen = new Scene(fxmlLoad);
 
-		
-		Parent fxmlUsers = FXMLLoader.load(getClass().getResource("usersApp.fxml"));
-		usersScreen = new Scene(fxmlUsers, 1360, 700);
-
-		Parent fxmlHomeSerie = FXMLLoader.load(getClass().getResource("homeSerieApp.fxml"));
-		homeSerieScreen = new Scene(fxmlHomeSerie, 1360, 700);
-
-		Parent fxmlHelp = FXMLLoader.load(getClass().getResource("helpApp.fxml"));
-		helpScreen = new Scene(fxmlHelp, 1360, 700);
-
-		Parent fxmlSignature = FXMLLoader.load(getClass().getResource("signatureApp.fxml"));
-		signatureScreen = new Scene(fxmlSignature, 1360, 700);
-
-		Parent fxmlSignatureConta = FXMLLoader.load(getClass().getResource("signatureContaApp.fxml"));
-		signatureContaScreen = new Scene(fxmlSignatureConta, 1360, 700);
-
-		Parent fxmlPagamento = FXMLLoader.load(getClass().getResource("pagamentoApp.fxml"));
-		pagamentoScreen = new Scene(fxmlPagamento, 1360, 700);
-
-		Parent fxmlQuestion = FXMLLoader.load(getClass().getResource("questionsApp.fxml"));
-		questionScreen = new Scene(fxmlQuestion, 1360, 700);
-
-		Parent fxmlAddSerie = FXMLLoader.load(getClass().getResource("addSerieApp.fxml"));
-		addSerieScreen = new Scene(fxmlAddSerie, 1360, 700);
-
-		Parent fxmlConta = FXMLLoader.load(getClass().getResource("contaApp.fxml"));
-		contaScreen = new Scene(fxmlConta, 1360, 700);
-
-		Parent fxmlVideo = FXMLLoader.load(getClass().getResource("configurarVideoApp.fxml"));
-		videoScreen = new Scene(fxmlVideo, 1360, 700);
-
-		Parent fxmladdFilme = FXMLLoader.load(getClass().getResource("addFilmeApp.fxml"));
-		addFilmeScreen = new Scene(fxmladdFilme, 1360, 700);
-
-		Parent fxmlHomeFilme = FXMLLoader.load(getClass().getResource("homeFilmeApp.fxml"));
-		homeFilmScreen = new Scene(fxmlHomeFilme, 1360, 700);
-
-		Parent fxmlUserList = FXMLLoader.load(getClass().getResource("usersListApp.fxml"));
-		userListScreen = new Scene(fxmlUserList, 1360, 700);
-
-		Parent fxmlSelecionaFilme = FXMLLoader.load(getClass().getResource("selecionaFilmeApp.fxml"));
-		selecionaFilmeScreen = new Scene(fxmlSelecionaFilme, 1360, 700);
-
-		Parent fxmlSelecionaSerie = FXMLLoader.load(getClass().getResource("selecionaSerieApp.fxml"));
-		selecionaSerieScreen = new Scene(fxmlSelecionaSerie, 1360, 700);
-
-		Parent fxmlReproduzFilme = FXMLLoader.load(getClass().getResource("reproducaoFilmeApp.fxml"));
-		reproducaoFilmeScreen = new Scene(fxmlReproduzFilme);
-
-		Parent fxmlReproduzSerie = FXMLLoader.load(getClass().getResource("reproducaoSerieApp.fxml"));
-		reproducaoSerieScreen = new Scene(fxmlReproduzSerie);
-
-		Parent fxmlAddPerfil = FXMLLoader.load(getClass().getResource("addPerfil.fxml"));
-		addPerfilScreen = new Scene(fxmlAddPerfil, 1360, 700);
-		
-		Parent fxmlGenero = FXMLLoader.load(getClass().getResource("generos.fxml"));
-		generoScreen = new Scene(fxmlGenero, 1360, 700);
-		
-		
-		primaryStage.setScene(enterScreen);
+		primaryStage.setScene(loadScreen);
 		primaryStage.show();
 
 	}
 
-	public static void changeScreen(String scr) {
+	public static void changeScreen(String scr) throws IOException {
 		switch (scr) {
 		case "enter":
+			Parent fxmlEnter = FXMLLoader.load(App.class.getResource("enterApp.fxml"));
+			enterScreen = new Scene(fxmlEnter, 1360, 700);
 			stage.setScene(enterScreen);
 			break;
 		case "home":
+			Parent fxmlHomeSerie = FXMLLoader.load(App.class.getResource("homeSerieApp.fxml"));
+			homeSerieScreen = new Scene(fxmlHomeSerie, 1360, 700);
 			stage.setScene(homeSerieScreen);
 			break;
 		case "help":
+			Parent fxmlHelp = FXMLLoader.load(App.class.getResource("helpApp.fxml"));
+			helpScreen = new Scene(fxmlHelp, 1360, 700);
 			stage.setScene(helpScreen);
 			break;
 		case "users":
+			Parent fxmlUsers = FXMLLoader.load(App.class.getResource("usersApp.fxml"));
+			usersScreen = new Scene(fxmlUsers, 1360, 700);
 			stage.setScene(usersScreen);
 			break;
 		case "signature":
+			Parent fxmlSignature = FXMLLoader.load(App.class.getResource("signatureApp.fxml"));
+			signatureScreen = new Scene(fxmlSignature, 1360, 700);
 			stage.setScene(signatureScreen);
 			break;
 		case "signatureConta":
+			Parent fxmlSignatureConta = FXMLLoader.load(App.class.getResource("signatureContaApp.fxml"));
+			signatureContaScreen = new Scene(fxmlSignatureConta, 1360, 700);
 			stage.setScene(signatureContaScreen);
 			break;
 		case "pagamento":
+			Parent fxmlPagamento = FXMLLoader.load(App.class.getResource("pagamentoApp.fxml"));
+			pagamentoScreen = new Scene(fxmlPagamento, 1360, 700);
 			stage.setScene(pagamentoScreen);
 			break;
 		case "question":
+			Parent fxmlQuestion = FXMLLoader.load(App.class.getResource("questionsApp.fxml"));
+			questionScreen = new Scene(fxmlQuestion, 1360, 700);
 			stage.setScene(questionScreen);
 			break;
 		case "addSerie":
+			Parent fxmlAddSerie = FXMLLoader.load(App.class.getResource("addSerieApp.fxml"));
+			addSerieScreen = new Scene(fxmlAddSerie, 1360, 700);
 			stage.setScene(addSerieScreen);
 			break;
 		case "conta":
+			Parent fxmlConta = FXMLLoader.load(App.class.getResource("contaApp.fxml"));
+			contaScreen = new Scene(fxmlConta, 1360, 700);
 			stage.setScene(contaScreen);
 			break;
 		case "video":
+			Parent fxmlVideo = FXMLLoader.load(App.class.getResource("configurarVideoApp.fxml"));
+			videoScreen = new Scene(fxmlVideo, 1360, 700);
 			stage.setScene(videoScreen);
 			break;
 		case "addFilme":
+			Parent fxmladdFilme = FXMLLoader.load(App.class.getResource("addFilmeApp.fxml"));
+			addFilmeScreen = new Scene(fxmladdFilme, 1360, 700);
 			stage.setScene(addFilmeScreen);
 			break;
 		case "filmHome":
+			Parent fxmlHomeFilme = FXMLLoader.load(App.class.getResource("homeFilmeApp.fxml"));
+			homeFilmScreen = new Scene(fxmlHomeFilme, 1360, 700);
 			stage.setScene(homeFilmScreen);
 			break;
 		case "userList":
+			Parent fxmlUserList = FXMLLoader.load(App.class.getResource("usersListApp.fxml"));
+			userListScreen = new Scene(fxmlUserList, 1360, 700);
 			stage.setScene(userListScreen);
 			break;
 		case "selecionaFilme":
+			Parent fxmlSelecionaFilme = FXMLLoader.load(App.class.getResource("selecionaFilmeApp.fxml"));
+			selecionaFilmeScreen = new Scene(fxmlSelecionaFilme, 1360, 700);
 			stage.setScene(selecionaFilmeScreen);
 			break;
 		case "selecionaSerie":
+			Parent fxmlSelecionaSerie = FXMLLoader.load(App.class.getResource("selecionaSerieApp.fxml"));
+			selecionaSerieScreen = new Scene(fxmlSelecionaSerie, 1360, 700);
 			stage.setScene(selecionaSerieScreen);
 			break;
 		case "reproduzFilme":
+			Parent fxmlReproduzFilme = FXMLLoader.load(App.class.getResource("reproducaoFilmeApp.fxml"));
+			reproducaoFilmeScreen = new Scene(fxmlReproduzFilme);
 			stage.setScene(reproducaoFilmeScreen);
 			break;
 		case "reproduzSerie":
+			Parent fxmlReproduzSerie = FXMLLoader.load(App.class.getResource("reproducaoSerieApp.fxml"));
+			reproducaoSerieScreen = new Scene(fxmlReproduzSerie);
 			stage.setScene(reproducaoSerieScreen);
 			break;
 		case "addPerfil":
+			Parent fxmlAddPerfil = FXMLLoader.load(App.class.getResource("addPerfil.fxml"));
+			addPerfilScreen = new Scene(fxmlAddPerfil, 1360, 700);
 			stage.setScene(addPerfilScreen);
 			break;
 		case "generos":
+			Parent fxmlGenero = FXMLLoader.load(App.class.getResource("generos.fxml"));
+			generoScreen = new Scene(fxmlGenero, 1360, 700);
 			stage.setScene(generoScreen);
 			break;
-		case "exit":
-			stage.close();
+		case "load":
+			stage.setScene(loadScreen);
 			break;
-
+		case "loadLogin":
+			Parent fxmlLoginLoad = FXMLLoader.load(App.class.getResource("loadingLogin.fxml"));
+			loadLoginScreen = new Scene(fxmlLoginLoad);
+			stage.setScene(loadLoginScreen);
+			break;
+		case "loadFinal":
+			Parent fxmlFinalLoad = FXMLLoader.load(App.class.getResource("loadingFinal.fxml"));
+			loadFinalScreen = new Scene(fxmlFinalLoad);
+			stage.setScene(loadFinalScreen);
+			break;
+		case "loadSair":
+			Parent fxmlSairLoad = FXMLLoader.load(App.class.getResource("loadingSair.fxml"));
+			loadSairScreen = new Scene(fxmlSairLoad);
+			stage.setScene(loadSairScreen);
+			break;
+		case "exit":
+			Platform.exit();
+			break;
 		default:
 			break;
 		}
-	}
-
-	@Override
-	public void stop() throws Exception {
-		Conn.closeConn();
-		super.stop();
 	}
 
 }

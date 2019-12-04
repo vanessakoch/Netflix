@@ -38,10 +38,10 @@
          <children>
             <AnchorPane prefHeight="66.0" prefWidth="609.0">
                <children>
-                  <JFXRadioButton fx:id="perfil1" layoutX="14.0" layoutY="15.0" onAction="#addTexto" text="Perfil 1" />
-                  <JFXRadioButton fx:id="perfil2" layoutX="161.0" layoutY="15.0" onAction="#addTexto" text="Perfil 2" />
-                  <JFXRadioButton fx:id="perfil3" layoutX="312.0" layoutY="15.0" onAction="#addTexto" text="Perfil 3" />
-                  <JFXRadioButton fx:id="perfil4" layoutX="466.0" layoutY="15.0" onAction="#addTexto" text="Perfil 4" />
+                  <JFXRadioButton fx:id="perfil1" layoutX="14.0" layoutY="15.0" onAction="#addTexto" selected="true" style="-jfx-selected-color: yellow;" text="Perfil 1" />
+                  <JFXRadioButton fx:id="perfil2" layoutX="161.0" layoutY="15.0" onAction="#addTexto" style="-jfx-selected-color: yellow;" text="Perfil 2" />
+                  <JFXRadioButton fx:id="perfil3" layoutX="312.0" layoutY="15.0" onAction="#addTexto" style="-jfx-selected-color: yellow;" text="Perfil 3" />
+                  <JFXRadioButton fx:id="perfil4" layoutX="466.0" layoutY="15.0" onAction="#addTexto" style="-jfx-selected-color: yellow;" text="Perfil 4" />
                </children>
             </AnchorPane>
          </children>

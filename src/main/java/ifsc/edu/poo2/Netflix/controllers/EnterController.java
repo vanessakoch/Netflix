@@ -6,10 +6,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 
 import ifsc.edu.poo2.Netflix.App;
-import ifsc.edu.poo2.Netflix.entities.User;
-import ifsc.edu.poo2.Netflix.entities.UserDAO;
+import ifsc.edu.poo2.Netflix.database.UserDAO;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -41,33 +39,26 @@ public class EnterController {
 	private JFXButton btnAssinar;
 
 	public static String loginName = "Vanessa";
+	public static String loginEmail = null;
+	public static String loginSenha = null;
+
+	UserDAO dao = new UserDAO();
 
 	@FXML
 	public void btnEntrarAction() throws IOException {
-		boolean validar = false;
-		for (User u : UserDAO.getUsers()) {
-			if (txtLogin.getText().contentEquals(u.getEmail()) && txtSenha.getText().contentEquals(u.getSenha())) {
-				validar = true;
-				loginName = u.getName();
-				App.changeScreen("users");
-				break;
-			}
-		}
-		if (!validar) {
-			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
-			dialogoErro.setTitle("Atenção");
-			dialogoErro.setHeaderText("Dados incorretos");
-			dialogoErro.showAndWait();
-		}
+		loginEmail = txtLogin.getText();
+		loginSenha = txtSenha.getText();
+		App.changeScreen("loadLogin");
+
 	}
 
 	@FXML
-	public void btnAssinarAction() {
+	public void btnAssinarAction() throws IOException {
 		App.changeScreen("signature");
 	}
 
 	@FXML
-	public void btnAjudaAction() {
+	public void btnAjudaAction() throws IOException {
 		App.changeScreen("question");
 	}
 

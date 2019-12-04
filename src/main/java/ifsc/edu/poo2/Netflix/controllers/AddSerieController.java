@@ -1,5 +1,6 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -7,8 +8,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
 import ifsc.edu.poo2.Netflix.App;
+import ifsc.edu.poo2.Netflix.database.SerieDAO;
 import ifsc.edu.poo2.Netflix.entities.Serie;
-import ifsc.edu.poo2.Netflix.entities.SerieDAO;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -40,21 +42,47 @@ public class AddSerieController implements Initializable {
 	@FXML
 	private TextField txtSerie;
 
-	@FXML
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listSerie.setItems(SerieDAO.getSerie());
+		updateList();
+	}
+
+	public void updateList() {
+		SerieDAO dao = new SerieDAO();
+		listSerie.setItems(null);
+		try {
+			listSerie.setItems((ObservableList<Serie>) dao.getAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
 	public void adicionaSerie() {
 		try {
 			if (!txtTemporadas.getText().isEmpty() && !txtAno.getText().isEmpty() && !txtSerie.getText().isEmpty()) {
-				Serie serie = new Serie(txtSerie.getText(), Integer.parseInt(txtTemporadas.getText()),
-						Integer.parseInt(txtAno.getText()));
-				SerieDAO.addSerie(serie);
+				boolean existe = false;
+				for (int i = 0; i < new SerieDAO().getAll().size(); i++) {
+					if (txtSerie.getText().equalsIgnoreCase(new SerieDAO().getAll().get(i).getTitulo())) {
+						existe = true;
+						break;
+					}
+				}
+				if (existe == false) {
+					Serie serie = new Serie(txtSerie.getText(), Integer.parseInt(txtTemporadas.getText()),
+							Integer.parseInt(txtAno.getText()));
+					new SerieDAO().add(serie);
+					updateList();
+				} else {
+					Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
+					dialogoErro.setTitle("Atenção");
+					dialogoErro.setHeaderText("Esse título já existe!");
+					dialogoErro.showAndWait();
+				}
 				txtSerie.clear();
 				txtTemporadas.clear();
 				txtAno.clear();
+
 			}
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
@@ -68,9 +96,11 @@ public class AddSerieController implements Initializable {
 	@FXML
 	public void removeSerie() {
 		try {
-			if (!SerieDAO.getSerie().isEmpty())
-				SerieDAO.delete(listSerie.getSelectionModel().getSelectedItem());
-		}catch(Exception e) {
+			if (!new SerieDAO().getAll().isEmpty())
+				new SerieDAO().delete(listSerie.getSelectionModel().getSelectedItem());
+			updateList();
+
+		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 			dialogoErro.setTitle("Atenção");
 			dialogoErro.setHeaderText("Série não foi selecionada");
@@ -81,28 +111,31 @@ public class AddSerieController implements Initializable {
 	@FXML
 	public void editaSerie() {
 		try {
-			if(txtSerie.getText().isEmpty()) {
-				if (!listSerie.getItems().isEmpty() && !txtTemporadas.getText().isEmpty() && !txtAno.getText().isEmpty()) {
-					listSerie.getSelectionModel().getSelectedItem().setNumTemporada(Integer.parseInt(txtTemporadas.getText()));
+			if (txtSerie.getText().isEmpty()) {
+				if (!listSerie.getItems().isEmpty() && !txtTemporadas.getText().isEmpty()
+						&& !txtAno.getText().isEmpty()) {
+					listSerie.getSelectionModel().getSelectedItem()
+							.setNumTemporada(Integer.parseInt(txtTemporadas.getText()));
 					listSerie.getSelectionModel().getSelectedItem().setAno(Integer.parseInt(txtAno.getText()));
-					SerieDAO.update(listSerie.getSelectionModel().getSelectedItem());
-	
+					new SerieDAO().update(listSerie.getSelectionModel().getSelectedItem());
+
 				} else if (!listSerie.getItems().isEmpty() && !txtTemporadas.getText().isEmpty()) {
-					listSerie.getSelectionModel().getSelectedItem().setNumTemporada(Integer.parseInt(txtTemporadas.getText()));
-					SerieDAO.update(listSerie.getSelectionModel().getSelectedItem());
-	
+					listSerie.getSelectionModel().getSelectedItem()
+							.setNumTemporada(Integer.parseInt(txtTemporadas.getText()));
+					new SerieDAO().update(listSerie.getSelectionModel().getSelectedItem());
+
 				} else if (!listSerie.getItems().isEmpty() && !txtAno.getText().isEmpty()) {
 					listSerie.getSelectionModel().getSelectedItem().setAno(Integer.parseInt(txtAno.getText()));
-					SerieDAO.update(listSerie.getSelectionModel().getSelectedItem());
+					new SerieDAO().update(listSerie.getSelectionModel().getSelectedItem());
 				}
-			}else {
+
+			} else {
 				Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 				dialogoErro.setTitle("Atenção");
 				dialogoErro.setHeaderText("Título não pode ser alterado!");
-				dialogoErro.showAndWait();	
+				dialogoErro.showAndWait();
 			}
-			listSerie.setItems(null);
-			listSerie.setItems(SerieDAO.getSerie());
+			updateList();
 			txtSerie.clear();
 			txtTemporadas.clear();
 			txtAno.clear();
@@ -115,7 +148,8 @@ public class AddSerieController implements Initializable {
 	}
 
 	@FXML
-	public void retornar() {
+	public void retornar() throws IOException {
 		App.changeScreen("home");
 	}
+
 }

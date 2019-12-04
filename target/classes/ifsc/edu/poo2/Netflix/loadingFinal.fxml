@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="84.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.controllers.LoadingFinalController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="84.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="84.0" prefWidth="605.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="42.0" prefHeight="22.0" prefWidth="570.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="16.0" />
+                  <Label layoutX="217.0" layoutY="14.0" prefHeight="19.0" prefWidth="166.0" text="Por favor, aguarde ..." textAlignment="CENTER" textFill="#20430f" AnchorPane.leftAnchor="217.0" AnchorPane.rightAnchor="217.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

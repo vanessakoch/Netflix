@@ -10,11 +10,11 @@ import javax.persistence.ManyToOne;
 public class Filme {
 
 	@Id
-	@Column( name = "Filme" )
+	@Column(name = "Filme")
 	private String titulo;
-	@Column( name = "Ano" )
+	@Column(name = "Ano")
 	private int ano;
-	@Column( name = "Diretor" )
+	@Column(name = "Diretor")
 	private String diretor;
 
 	@ManyToOne
@@ -39,6 +39,14 @@ public class Filme {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}
+
+	public Genero getGenero() {
+		return genero;
+	}
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}
 
 	public int getAno() {

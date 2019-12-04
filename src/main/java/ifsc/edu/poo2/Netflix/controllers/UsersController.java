@@ -1,14 +1,16 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 
 import ifsc.edu.poo2.Netflix.App;
+import ifsc.edu.poo2.Netflix.database.PerfilDAO;
 import ifsc.edu.poo2.Netflix.entities.Perfil;
-import ifsc.edu.poo2.Netflix.entities.PerfilDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -52,7 +54,11 @@ public class UsersController implements Initializable {
 
 	@FXML
 	public void initialize(URL location, ResourceBundle resources) {
-		addTexto();
+		try {
+			addTexto();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		perfil1.setPadding(new Insets(10));
 		perfil2.setPadding(new Insets(10));
 		perfil3.setPadding(new Insets(10));
@@ -64,37 +70,40 @@ public class UsersController implements Initializable {
 
 	}
 
-	public void addTexto() {
-		if (!PerfilDAO.getPerfis().isEmpty()) {
-			if (PerfilDAO.getPerfis().size() == 1) {
-				perfil1.setText(PerfilDAO.getPerfis().get(0).getNome().toUpperCase());
+	public void addTexto() throws UnknownHostException, IOException {
+		PerfilDAO dao = new PerfilDAO();
+		if (!new PerfilDAO().getAll().isEmpty()) {
+			if (dao.getAll().size() == 1) {
+				perfil1.setText(dao.getAll().get(0).getNome().toUpperCase());
 				perfil2.setText("Adicione");
 				perfil3.setText("Adicione");
 				perfil4.setText("Adicione");
-			}
-			if (PerfilDAO.getPerfis().size() == 2) {
-				perfil1.setText(PerfilDAO.getPerfis().get(0).getNome().toUpperCase());
-				perfil2.setText(PerfilDAO.getPerfis().get(1).getNome().toUpperCase());
+			} else if (new PerfilDAO().getAll().size() == 2) {
+				perfil1.setText(dao.getAll().get(0).getNome().toUpperCase());
+				perfil2.setText(dao.getAll().get(1).getNome().toUpperCase());
 				perfil3.setText("Adicione");
 				perfil4.setText("Adicione");
-			}
-			if (PerfilDAO.getPerfis().size() == 3) {
-				perfil1.setText(PerfilDAO.getPerfis().get(0).getNome().toUpperCase());
-				perfil2.setText(PerfilDAO.getPerfis().get(1).getNome().toUpperCase());
-				perfil3.setText(PerfilDAO.getPerfis().get(2).getNome().toUpperCase());
+			} else if (new PerfilDAO().getAll().size() == 3) {
+				perfil1.setText(dao.getAll().get(0).getNome().toUpperCase());
+				perfil2.setText(dao.getAll().get(1).getNome().toUpperCase());
+				perfil3.setText(dao.getAll().get(2).getNome().toUpperCase());
 				perfil4.setText("Adicione");
+			} else if (new PerfilDAO().getAll().size() == 4) {
+				perfil1.setText(dao.getAll().get(0).getNome().toUpperCase());
+				perfil2.setText(dao.getAll().get(1).getNome().toUpperCase());
+				perfil3.setText(dao.getAll().get(2).getNome().toUpperCase());
+				perfil4.setText(dao.getAll().get(3).getNome().toUpperCase());
 			}
-			if (PerfilDAO.getPerfis().size() == 4) {
-				perfil1.setText(PerfilDAO.getPerfis().get(0).getNome().toUpperCase());
-				perfil2.setText(PerfilDAO.getPerfis().get(1).getNome().toUpperCase());
-				perfil3.setText(PerfilDAO.getPerfis().get(2).getNome().toUpperCase());
-				perfil4.setText(PerfilDAO.getPerfis().get(3).getNome().toUpperCase());
-			}
+		} else if (new PerfilDAO().getAll().isEmpty()) {
+			perfil1.setText("Adicione");
+			perfil2.setText("Adicione");
+			perfil3.setText("Adicione");
+			perfil4.setText("Adicione");
 		}
 	}
 
 	@FXML
-	void userChoice(ActionEvent event) {
+	void userChoice(ActionEvent event) throws UnknownHostException, IOException {
 		verSelecionado();
 		if (radioGroup.getSelectedToggle() != null && selecionado != null) {
 			App.changeScreen("home");
@@ -108,23 +117,23 @@ public class UsersController implements Initializable {
 
 	public static Perfil selecionado;
 
-	public Perfil verSelecionado() {
-		if (getPerfil1().isSelected() && PerfilDAO.getPerfis().size() >= 1) {
-			return selecionado = PerfilDAO.getPerfis().get(0);
-		} else if (getPerfil2().isSelected() && PerfilDAO.getPerfis().size() >= 2) {
-			return selecionado = PerfilDAO.getPerfis().get(1);
-		} else if (getPerfil3().isSelected() && PerfilDAO.getPerfis().size() >= 3) {
-			return selecionado = PerfilDAO.getPerfis().get(2);
-		} else if (getPerfil4().isSelected() && PerfilDAO.getPerfis().size() == 4) {
-			return selecionado = PerfilDAO.getPerfis().get(3);
+	public Perfil verSelecionado() throws UnknownHostException, IOException {
+		PerfilDAO dao = new PerfilDAO();
+		if (getPerfil1().isSelected() && dao.getAll().size() >= 1) {
+			return selecionado = dao.getAll().get(0);
+		} else if (getPerfil2().isSelected() && dao.getAll().size() >= 2) {
+			return selecionado = dao.getAll().get(1);
+		} else if (getPerfil3().isSelected() && dao.getAll().size() >= 3) {
+			return selecionado = dao.getAll().get(2);
+		} else if (getPerfil4().isSelected() && dao.getAll().size() == 4) {
+			return selecionado = dao.getAll().get(3);
 		}
 		return selecionado = null;
 	}
 
 	@FXML
-	public void gerenciaConta() {
+	public void gerenciaConta() throws UnknownHostException, IOException {
 		verSelecionado();
-
 		if (radioGroup.getSelectedToggle() != null && selecionado != null) {
 			App.changeScreen("conta");
 		} else {
@@ -136,8 +145,8 @@ public class UsersController implements Initializable {
 	}
 
 	@FXML
-	public void adicionarPerfil() {
-		if (PerfilDAO.getPerfis().size() <= 3) {
+	public void adicionarPerfil() throws UnknownHostException, IOException {
+		if (new PerfilDAO().getAll().size() <= 3) {
 			App.changeScreen("addPerfil");
 		} else {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);

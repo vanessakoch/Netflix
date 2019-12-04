@@ -6,12 +6,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Serie {
+	
 	@Id
-	@Column( name = "Série" )
+	@Column(name = "Série")
 	private String titulo;
-	@Column( name = "Temporadas" )
+	@Column(name = "Temporadas")
 	private int qtdTemporadas;
-	@Column( name = "Ano" )
+	@Column(name = "Ano")
 	private int ano;
 
 	public Serie() {

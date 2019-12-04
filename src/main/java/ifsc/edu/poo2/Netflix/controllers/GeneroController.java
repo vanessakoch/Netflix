@@ -1,6 +1,8 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
 import java.net.URL;
+import java.net.UnknownHostException;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -8,10 +10,10 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
 
 import ifsc.edu.poo2.Netflix.App;
-import ifsc.edu.poo2.Netflix.entities.Filme;
-import ifsc.edu.poo2.Netflix.entities.FilmeDAO;
+import ifsc.edu.poo2.Netflix.database.FilmeDAO;
+import ifsc.edu.poo2.Netflix.database.GeneroDAO;
 import ifsc.edu.poo2.Netflix.entities.Genero;
-import ifsc.edu.poo2.Netflix.entities.GeneroDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,10 +38,22 @@ public class GeneroController implements Initializable {
 
 	@FXML
 	private JFXButton btnEdita;
+	GeneroDAO dao = new GeneroDAO();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		generoLista.setItems(GeneroDAO.getGenero());
+		updateList();
+
+	}
+
+	public void updateList() {
+		GeneroDAO dao = new GeneroDAO();
+		generoLista.setItems(null);
+		try {
+			generoLista.setItems((ObservableList<Genero>) dao.getAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -47,24 +61,42 @@ public class GeneroController implements Initializable {
 		try {
 			if (!txtEditar.getText().isEmpty()) {
 				Genero genero = new Genero(txtEditar.getText());
-				GeneroDAO.addGenero(genero);
-				txtEditar.clear();
+				dao.add(genero);
 			}
+			txtEditar.clear();
+			updateList();
+
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 			dialogoErro.setTitle("Atenção");
-			dialogoErro.setHeaderText("Contém dados incorretos");
+			dialogoErro.setHeaderText("Insira um nome para poder editar!");
 			dialogoErro.showAndWait();
-			System.out.println("Não foi possível adicionar, verifique inconsistencias!");
 		}
 	}
 
 	@FXML
 	public void removeGenero() {
 		try {
-			if (!GeneroDAO.getGenero().isEmpty()) {
-				GeneroDAO.delete(generoLista.getSelectionModel().getSelectedItem());
+			if (!dao.getAll().isEmpty() && generoLista.getSelectionModel().getSelectedItem() != null) {
+				boolean existe = false;
+				for (int i = 0; i < new FilmeDAO().getAll().size(); i++) {
+					if (generoLista.getSelectionModel().getSelectedItem().getNome()
+							.equalsIgnoreCase(new FilmeDAO().getAll().get(i).getGenero().getNome())) {
+						existe = true;
+						break;
+					}
+				}
+				if (!existe) {
+					dao.delete(generoLista.getSelectionModel().getSelectedItem());
+					updateList();
+				} else {
+					Alert dialogoErro = new Alert(Alert.AlertType.ERROR);
+					dialogoErro.setTitle("ACESSO NEGADO");
+					dialogoErro.setHeaderText("Este gênero está em uso!");
+					dialogoErro.showAndWait();
+				}
 			}
+
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 			dialogoErro.setTitle("Atenção");
@@ -72,35 +104,29 @@ public class GeneroController implements Initializable {
 			dialogoErro.showAndWait();
 		}
 	}
-	
-	@FXML
-	public void editaGenero() {
-		try {
-			if (!txtEditar.getText().isEmpty()) {
-				if (!generoLista.getItems().isEmpty()) {
-					generoLista.getSelectionModel().getSelectedItem().setNome(txtEditar.getText());
-					GeneroDAO.update(generoLista.getSelectionModel().getSelectedItem());
-				}
-				generoLista.setItems(null);
-				generoLista.setItems(GeneroDAO.getGenero());
-				txtEditar.clear();
-			} else {
-				Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
-				dialogoErro.setTitle("Atenção");
-				dialogoErro.setHeaderText("Título não pode ser alterado!");
-				dialogoErro.showAndWait();
-			}
 
-		} catch (Exception e) {
+	@FXML
+	public void editaGenero() throws UnknownHostException, IOException {
+		if (!txtEditar.getText().isEmpty()) {
+			if (!generoLista.getItems().isEmpty() && generoLista.getSelectionModel().getSelectedItem() != null) {
+				generoLista.getSelectionModel().getSelectedItem().setNome(txtEditar.getText());
+				dao.update(generoLista.getSelectionModel().getSelectedItem());
+			}
+			generoLista.setItems(null);
+			generoLista.setItems((ObservableList<Genero>) dao.getAll());
+			txtEditar.clear();
+			updateList();
+		} else {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 			dialogoErro.setTitle("Atenção");
-			dialogoErro.setHeaderText("Dados incorretos para edição!");
+			dialogoErro.setHeaderText("Selecione ao menos um item!");
 			dialogoErro.showAndWait();
 		}
+
 	}
 
 	@FXML
-	void retornar(ActionEvent event) {
+	void retornar(ActionEvent event) throws IOException {
 		App.changeScreen("filmHome");
 	}
 

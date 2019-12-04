@@ -8,10 +8,11 @@ import javax.persistence.Id;
 
 @Entity
 public class Genero {
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	private Long id;
-	@Column( name = "Genero" )
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(name = "Genero")
 	private String nome;
 
 	public Genero() {
@@ -22,16 +23,18 @@ public class Genero {
 		this.nome = nome;
 	}
 
+	public Genero(int id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
-	public Long getId() {
+	public int getId() {
 		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public void setNome(String nome) {
@@ -42,6 +45,7 @@ public class Genero {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
@@ -55,6 +59,8 @@ public class Genero {
 		if (getClass() != obj.getClass())
 			return false;
 		Genero other = (Genero) obj;
+		if (id != other.id)
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -65,6 +71,7 @@ public class Genero {
 
 	@Override
 	public String toString() {
-		return "" + nome;
+		return "" + id + " " + nome;
 	}
+
 }

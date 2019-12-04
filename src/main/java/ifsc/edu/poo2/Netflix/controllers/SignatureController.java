@@ -1,5 +1,7 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 
@@ -47,31 +49,31 @@ public class SignatureController {
 	public static float assinar;
 
 	@FXML
-	public void sair() {
+	public void sair() throws IOException {
 		App.changeScreen("exit");
 	}
 
 	@FXML
-	public void enterScreen() {
+	public void enterScreen() throws IOException {
 		App.changeScreen("enter");
 	}
 
 	@FXML
-	public void assinaturaBasica() {
+	public void assinaturaBasica() throws IOException {
 		assinatura = "Basico";
 		assinar = 21.90f;
 		App.changeScreen("signatureConta");
 	}
 
 	@FXML
-	public void assinaturaPadrao() {
+	public void assinaturaPadrao() throws IOException {
 		assinatura = "Padrao";
 		assinar = 32.90f;
 		App.changeScreen("signatureConta");
 	}
 
 	@FXML
-	public void assinaturaPremium() {
+	public void assinaturaPremium() throws IOException {
 		assinatura = "Premium";
 		assinar = 45.90f;
 		App.changeScreen("signatureConta");

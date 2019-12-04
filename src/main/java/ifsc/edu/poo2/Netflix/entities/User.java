@@ -1,9 +1,8 @@
 package ifsc.edu.poo2.Netflix.entities;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,11 +18,10 @@ public class User {
 	private String senha;
 	private String plano;
 	private float valorMensal;
-	private String registerDate;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Perfil> listaPerfis = new ArrayList<>();
-	
+	private List<Perfil> listaPerfis;
+
 	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
 	private List<Filme> listaFilme;
 
@@ -44,8 +42,6 @@ public class User {
 		this.senha = senha;
 		this.plano = plano;
 		this.valorMensal = valorMensal;
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		this.registerDate = dtf.format(LocalDateTime.now());
 	}
 
 	public String getName() {
@@ -113,17 +109,17 @@ public class User {
 			listaPergunta = new ArrayList<>();
 		this.listaPergunta.add(pergunta);
 	}
-	
+
 	public void sharePerfil(Perfil perfil) {
 		if (listaPerfis == null)
 			listaPerfis = new ArrayList<>();
 		this.listaPerfis.add(perfil);
 	}
-	
+
 	public void removeSharePerfil(Perfil perfil) {
 		this.listaPerfis.remove(perfil);
 	}
-	
+
 	public List<Filme> getListaFilme() {
 		return listaFilme;
 	}
@@ -146,7 +142,7 @@ public class User {
 
 	public void setListaPergunta(List<Pergunta> listaPergunta) {
 		this.listaPergunta = listaPergunta;
-	}	
+	}
 
 	public List<Perfil> getPerfis() {
 		return listaPerfis;
@@ -156,14 +152,6 @@ public class User {
 		this.listaPerfis = perfis;
 	}
 
-	public String getRegisterDate() {
-		return registerDate;
-	}
-
-	public void setRegisterDate(String registerDate) {
-		this.registerDate = registerDate;
-	}
-	
 	public List<Perfil> getListaPerfis() {
 		return listaPerfis;
 	}
@@ -189,7 +177,6 @@ public class User {
 		result = prime * result + ((listaSerie == null) ? 0 : listaSerie.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((plano == null) ? 0 : plano.hashCode());
-		result = prime * result + ((registerDate == null) ? 0 : registerDate.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + Float.floatToIntBits(valorMensal);
 		return result;
@@ -239,11 +226,6 @@ public class User {
 				return false;
 		} else if (!plano.equals(other.plano))
 			return false;
-		if (registerDate == null) {
-			if (other.registerDate != null)
-				return false;
-		} else if (!registerDate.equals(other.registerDate))
-			return false;
 		if (senha == null) {
 			if (other.senha != null)
 				return false;
@@ -253,8 +235,5 @@ public class User {
 			return false;
 		return true;
 	}
-
-	
-	
 
 }

@@ -1,5 +1,6 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,10 +9,11 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXListView;
 
 import ifsc.edu.poo2.Netflix.App;
+import ifsc.edu.poo2.Netflix.database.FilmeDAO;
+import ifsc.edu.poo2.Netflix.database.GeneroDAO;
 import ifsc.edu.poo2.Netflix.entities.Filme;
-import ifsc.edu.poo2.Netflix.entities.FilmeDAO;
 import ifsc.edu.poo2.Netflix.entities.Genero;
-import ifsc.edu.poo2.Netflix.entities.GeneroDAO;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -48,8 +50,21 @@ public class AddFilmController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		listFilme.setItems(FilmeDAO.getFilm());
-		comboGenero.setItems(GeneroDAO.getGenero());
+		updateList();
+		try {
+			comboGenero.setItems((ObservableList<Genero>) new GeneroDAO().getAll());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void updateList() {
+		listFilme.setItems(null);
+		try {
+			listFilme.setItems((ObservableList<Filme>) new FilmeDAO().getAll());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
@@ -57,28 +72,45 @@ public class AddFilmController implements Initializable {
 		try {
 			if (!txtDiretor.getText().isEmpty() && !txtAno.getText().isEmpty() && !txtFilme.getText().isEmpty()
 					&& !comboGenero.getSelectionModel().isEmpty()) {
-				Filme filme = new Filme(txtFilme.getText(), Integer.parseInt(txtAno.getText()), txtDiretor.getText(),
-						comboGenero.getValue());
-				FilmeDAO.addFilm(filme);
+				boolean existe = false;
+
+				for (int i = 0; i < new FilmeDAO().getAll().size(); i++) {
+					if (txtFilme.getText().equalsIgnoreCase(new FilmeDAO().getAll().get(i).getTitulo())) {
+						existe = true;
+						break;
+					}
+				}
+				if (existe == false) {
+					Filme filme = new Filme(txtFilme.getText(), Integer.parseInt(txtAno.getText()),
+							txtDiretor.getText(), comboGenero.getSelectionModel().getSelectedItem());
+					new FilmeDAO().add(filme);
+					updateList();
+				} else {
+					Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
+					dialogoErro.setTitle("Atenção");
+					dialogoErro.setHeaderText("Esse título já existe!");
+					dialogoErro.showAndWait();
+				}
+
 				txtFilme.clear();
 				txtDiretor.clear();
 				txtAno.clear();
-
 			}
+
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 			dialogoErro.setTitle("Atenção");
 			dialogoErro.setHeaderText("Contém dados incorretos");
 			dialogoErro.showAndWait();
-			System.out.println("Não foi possível adicionar, verifique inconsistencias!");
 		}
 	}
 
 	@FXML
 	public void removeFilme() {
 		try {
-			if (!FilmeDAO.getFilm().isEmpty()) {
-				FilmeDAO.delete(listFilme.getSelectionModel().getSelectedItem());
+			if (!new FilmeDAO().getAll().isEmpty()) {
+				new FilmeDAO().delete(listFilme.getSelectionModel().getSelectedItem());
+				updateList();
 			}
 		} catch (Exception e) {
 			Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
@@ -95,31 +127,30 @@ public class AddFilmController implements Initializable {
 				if (!listFilme.getItems().isEmpty() && !txtDiretor.getText().isEmpty() && !txtAno.getText().isEmpty()) {
 					listFilme.getSelectionModel().getSelectedItem().setDiretor(txtDiretor.getText());
 					listFilme.getSelectionModel().getSelectedItem().setAno(Integer.parseInt(txtAno.getText()));
-					FilmeDAO.update(listFilme.getSelectionModel().getSelectedItem());
+					new FilmeDAO().update(listFilme.getSelectionModel().getSelectedItem());
 
 				} else if (!listFilme.getItems().isEmpty() && !txtDiretor.getText().isEmpty()) {
 					listFilme.getSelectionModel().getSelectedItem().setDiretor(txtDiretor.getText());
-					FilmeDAO.update(listFilme.getSelectionModel().getSelectedItem());
+					new FilmeDAO().update(listFilme.getSelectionModel().getSelectedItem());
 
 				} else if (!listFilme.getItems().isEmpty() && !txtAno.getText().isEmpty()) {
 					listFilme.getSelectionModel().getSelectedItem().setAno(Integer.parseInt(txtAno.getText()));
-					FilmeDAO.update(listFilme.getSelectionModel().getSelectedItem());
+					new FilmeDAO().update(listFilme.getSelectionModel().getSelectedItem());
 
 				} else if (!listFilme.getItems().isEmpty() && !txtDiretor.getText().isEmpty()
 						&& !txtAno.getText().isEmpty()) {
 					listFilme.getSelectionModel().getSelectedItem().setDiretor(txtDiretor.getText());
 					listFilme.getSelectionModel().getSelectedItem().setAno(Integer.parseInt(txtAno.getText()));
-					FilmeDAO.update(listFilme.getSelectionModel().getSelectedItem());
+					new FilmeDAO().update(listFilme.getSelectionModel().getSelectedItem());
 				}
+				updateList();
+
 			} else {
 				Alert dialogoErro = new Alert(Alert.AlertType.WARNING);
 				dialogoErro.setTitle("Atenção");
 				dialogoErro.setHeaderText("Título não pode ser alterado!");
 				dialogoErro.showAndWait();
 			}
-			listFilme.setItems(null);
-			listFilme.setItems(FilmeDAO.getFilm());
-
 			txtFilme.clear();
 			txtDiretor.clear();
 			txtAno.clear();
@@ -132,7 +163,7 @@ public class AddFilmController implements Initializable {
 	}
 
 	@FXML
-	public void retornar() {
+	public void retornar() throws IOException {
 		App.changeScreen("filmHome");
 	}
 

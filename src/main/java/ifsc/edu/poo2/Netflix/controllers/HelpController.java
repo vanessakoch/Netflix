@@ -1,5 +1,7 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -79,17 +81,17 @@ public class HelpController {
 	}
 
 	@FXML
-	public void sair() {
+	public void sair() throws IOException {
 		App.changeScreen("exit");
 	}
 
 	@FXML
-	public void homeScreen() {
+	public void homeScreen() throws IOException {
 		App.changeScreen("home");
 	}
 
 	@FXML
-	public void search() {
+	public void search() throws IOException {
 		App.changeScreen("question");
 	}
 

@@ -36,7 +36,6 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
         </columnResizePolicy>
         <columns>
-            <TableColumn fx:id="colRegistro" prefWidth="75.0" text="Registro" />
           <TableColumn fx:id="colName" text="Nome" />
           <TableColumn fx:id="colEmail" maxWidth="220" minWidth="202.0" onEditCommit="#changeEmailCellEvent" prefWidth="202.0" text="E-mail" />
           <TableColumn fx:id="colSenha" onEditCommit="#changePasswordCellEvent" prefWidth="123.0" text="Senha" />
@@ -54,5 +53,15 @@
             </AnchorPane>
          </children>
       </HBox>
+      <Label layoutX="555.0" layoutY="112.0" text="Basico, Padrao e Premium" textFill="#0d0d0d" AnchorPane.rightAnchor="14.0">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label layoutX="492.0" layoutY="112.0" text="Planos Disponiveis:" textFill="#eb0505" underline="true" AnchorPane.rightAnchor="168.0">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

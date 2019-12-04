@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="553.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifsc.edu.poo2.Netflix.controllers.LoadingLoginController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="84.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="139.0" prefWidth="600.0" style="-fx-background-color: white;">
+               <children>
+                  <JFXProgressBar fx:id="progressBar" layoutX="69.0" layoutY="43.0" prefHeight="19.0" prefWidth="463.0" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="68.0" />
+                  <Label fx:id="lblExiste" layoutX="202.0" layoutY="14.0" prefHeight="19.0" prefWidth="150.0" text="Efetuando login ..." textAlignment="CENTER" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="201.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <JFXButton fx:id="btnCancelar" buttonType="RAISED" layoutX="402.0" layoutY="80.0" onAction="#cancelar" prefHeight="34.0" prefWidth="90.0" ripplerFill="#f5969645" style="-fx-background-color: red;" text="Cancelar" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Label fx:id="lblExiste" layoutX="69.0" layoutY="89.0" prefHeight="16.0" prefWidth="335.0" textFill="#ff6161" />
+               </children>
+            </AnchorPane>
+         </children>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,5 +1,7 @@
 package ifsc.edu.poo2.Netflix.controllers;
 
+import java.io.IOException;
+
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXRadioButton;
@@ -48,12 +50,12 @@ public class ConfigurarVideoController {
 	}
 
 	@FXML
-	public void voltarInicio() {
+	public void voltarInicio() throws IOException {
 		App.changeScreen("enter");
 	}
 
 	@FXML
-	public void lista() {
+	public void lista() throws IOException {
 		App.changeScreen("minhaLista");
 	}
 
